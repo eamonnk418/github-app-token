@@ -1,0 +1,21 @@
+name: Create GitHub App Token
+
+on:
+  workflow_call: 
+    outputs:
+      github_app_token:
+        description: "GitHub App Token"
+        value: ${{ jobs.create_github_app_token.outputs.github_app_token}}
+
+jobs:
+  create_github_app_token:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app_token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          skip-token-revoke: false
+    outputs:
+      github_app_token: ${{ steps.app_token.outputs.token }}
