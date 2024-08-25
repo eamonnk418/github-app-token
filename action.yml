@@ -1,0 +1,18 @@
+name: "create-app-token"
+author: "eamonnk418"
+description: "Load balancing across multiple GitHub Apps to optimize API rate limits."
+inputs:
+  app_id:
+    description: "GitHub App ID"
+    required: true
+  private_key:
+    description: "GitHub App private key"
+    required: true
+outputs:
+  app_id:
+    description: "GitHub App ID"
+  private_key:
+    description: "GitHub App private key"
+runs:
+  using: "node20"
+  main: "dist/index.js"
